@@ -1,21 +1,32 @@
-"""
-FastMCP quickstart example.
-
-cd to the `examples/snippets/clients` directory and run:
-    uv run server fastmcp_quickstart stdio
-"""
-
 from mcp.server.fastmcp import FastMCP
 
+import resources as res_tools
 # Create an MCP server
-mcp = FastMCP("Demo")
+mcp = FastMCP("EmojiUsage")
 
-
-# Add an addition tool
+# Exitence queries
 @mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers"""
-    return a + b
+def get_possible_contexts():
+    """
+    Returns list of possible contexts or feelings associated to an emoji.
+    """
+    return res_tools.get_contexts()
+
+@mcp.tool()
+def get_possible_contexts():
+    """
+    Returns list of possible social media plaftorms where emoji usage is recognized.
+    """
+    return res_tools.get_platforms()
+
+@mcp.tool()
+def is_valid_emoji():
+    """
+    Validates wether a given emoji string exists within the emoji usage dataset.
+    """
+    return res_tools.get_emoji_exists()
+
+
 
 
 # Add a dynamic greeting resource

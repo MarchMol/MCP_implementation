@@ -1,9 +1,13 @@
 from pydantic import BaseModel
-from typing import Literal
+from typing import Optional, List, Union
 
-
-
-class Context(BaseModel):
-    value = Literal['love', 'confusion', 'cool', 'celebration', 'funny', 'angry', 'sad',
-       'support', 'happy', 'surprise']
+class EmojiUsage(BaseModel):
+    context : Optional[str] = None
+    platform : Optional[str] = None
+    age : Optional[int] = None
+    gender : Optional[str] = None
     
+class Interpretation(BaseModel):
+    entries_amount : int = 0
+    type : str = ""
+    result : List[Union[str, float]] = []

@@ -77,3 +77,5 @@ def get_appropriate_emoji(query: EmojiUsage) -> list[str]:
 
 # @mcp.resource()
 # @mcp.prompt()
+if __name__ == "__main__":
+    mcp.run()
